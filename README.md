@@ -22,17 +22,14 @@ require_once('mysqli-connection-library.php');
 $dBConnection = connect();
 
 $userInputString = "My name is: ');DROP TABLES ...";
-
 // Clean SQL injection attempts from the string.
 $saferUserInputString = cleanString($userInputString);
 
-
 $userInputHtmlString = "<strong>My name is:</strong> ');DROP TABLES ...";
-
 // Clean SQL injection attempts from the string, whilst preserving HTML tags.
 $saferUserInputHtmlString = cleanHtmlString($userInputHtmlString);
 
-// Put your query through using mysqli_query().
+// Put your query through to the database using mysqli_query().
 $dBQuery = "SELECT [...]";// You can use a prepared statement here for better security.
 $returnQuery = mysqli_query($dBConnection,$dBQuery);
 // If you're expecting a result set, use mysqli_fetch_array().

@@ -1,0 +1,4 @@
+# Development files
+.vscode/*
+.DS_Store
+MySQLi-Connection-Library.code-workspace

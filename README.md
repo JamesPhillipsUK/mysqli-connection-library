@@ -1,6 +1,6 @@
 # MySQLi-Connection-Library
 
-A database connection library based on the MySQLi Library for PHP.
+A database connection library based on the MySQLi Library for PHP.  
 As used in [BlogDraw](https://blogdraw.com/ "BlogDraw").
 
 ## How To Use
@@ -29,7 +29,6 @@ $saferUserInputString = cleanString($userInputString);
 
 $userInputHtmlString = "<strong>My name is:</strong> ');DROP TABLES ...";
 
-
 // Clean SQL injection attempts from the string, whilst preserving HTML tags.
 $saferUserInputHtmlString = cleanHtmlString($userInputHtmlString);
 
@@ -38,9 +37,7 @@ $dBQuery = "SELECT [...]";// You can use a prepared statement here for better se
 $returnQuery = mysqli_query($dBConnection,$dBQuery);
 // If you're expecting a result set, use mysqli_fetch_array().
 while ($row = mysqli_fetch_array($returnQuery, MYSQLI_ASSOC))
-{
   //Iterate through results in $row[].
-}
 
 // Disconnect from the database.
 disconnect($dBConnection);

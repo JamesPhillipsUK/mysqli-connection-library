@@ -19,8 +19,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * 
  * @author    Jesse Phillips    <james@jamesphillipsuk.com>
- * @version   0.0.1rc1
- * @since     0.0.1rc1
+ * @version   0.0.1-rc1
+ * @since     0.0.1-rc1
  **/
 
 /**

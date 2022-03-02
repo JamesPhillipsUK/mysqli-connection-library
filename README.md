@@ -6,6 +6,8 @@ mysqli-connection-library is based on the PHP MySQLi Extension for handling data
 
 ## How To Use
 
+### Example Usage
+
 ```PHP
 <?php
 // If you define these, the library will use them by default.  
@@ -43,6 +45,10 @@ while ($row = mysqli_fetch_array($returnQuery, MYSQLI_ASSOC))
 disconnect($dBConnection);
 ?>
 ```
+
+### API Documentation
+
+View the complete API documentation here: [jamesphillipsuk.github.io/mysqli-connection-library](https://jamesphillipsuk.github.io/mysqli-connection-library/).
 
 ## System Requirements
 

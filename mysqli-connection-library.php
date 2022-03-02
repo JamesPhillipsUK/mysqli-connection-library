@@ -4,7 +4,7 @@
  *
  * Simple and easy procedural PHP script for connecting to a MySQL database.
  * 
- * @copyright (C) 2020, TuxSoft Limited, 2022 Jesse Phillips.
+ * @copyright (C) 2020 TuxSoft Limited, 2022 Jesse Phillips.
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -19,12 +19,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  * 
  * @author    Jesse Phillips    <james@jamesphillipsuk.com>
- * @version   0.0.1-rc1
+ * @version   0.0.1
  * @since     0.0.1-rc1
  **/
 
 /**
  * Connects to a database.
+ * 
  * @param    string    $server        (Optional) The database server's hostname (Defaults to DBSERVER).
  * @param    string    $username      (Optional) The database user (Defaults to DBUSER).
  * @param    string    $password      (Optional) The database user's password (Defaults to DBPASS).
@@ -33,7 +34,7 @@
  * @param    string    $socket        (Optional) The database socket.
  * @return   mysqli    The database connection object.
  **/
-function connect(string $server = DBSERVER, string $username = DBUSER, string $password = DBPASS, $databaseName = DBNAME, int $port = 0, string $socket = "")
+function connect(string $server = DBSERVER, string $username = DBUSER, string $password = DBPASS, $databaseName = DBNAME, int $port = 0, string $socket = ""): mysqli
 {
   if ($port != 0 && !empty($socket))
     $dBConnection = mysqli_connect($server, $username, $password, $databaseName, $port, $socket);
@@ -50,35 +51,39 @@ function connect(string $server = DBSERVER, string $username = DBUSER, string $p
 
 /**
  * Closes an open database connection.
+ * 
  * @param    mysqli    $dBConnection    The Database connection object.
  **/
-function disconnect(mysqli $dBConnection)
+function disconnect(mysqli $dBConnection): void
 {
   if (!empty($dBConnection))
     mysqli_close($dBConnection);
 }
 
 /**
- * Prevents xss/SQL injection
+ * Creates an "escape string" to help prevent SQL injection.
+ * This method will convert HTML to escape sequences.
+ * 
  * @param    mysqli    $dBConnection    The database connection object currently in use.
  * @param    string    $string          The String to clean.
  * @param    string    $encoding        (Optional) the encoding of the string (Defaults to UTF-8).
  * @return   string    The string.
  **/
-function cleanString(mysqli $dBConnection, string $string, string $encoding = "UTF-8")
+function cleanString(mysqli $dBConnection, string $string, string $encoding = "UTF-8"): string
 {
   $string = mysqli_real_escape_string($dBConnection, mb_convert_encoding(htmlspecialchars($string), $encoding));
   return $string;// Return the string.
 }
 
 /**
- * Prevents xss/SQL injection - doesn't strip HTML tags.
+ * Creates an "escape string" to help prevent SQL injection - doesn't strip HTML tags.
+ * 
  * @param    mysqli    $dBConnection    The database connection object currently in use.
  * @param    string    $string          The String to clean.
  * @param    string    $encoding        (Optional) the encoding of the string (Defaults to UTF-8).
  * @return   string    The string.
  **/
-function cleanHtmlString(mysqli $dBConnection, string $string, string $encoding = "UTF-8")
+function cleanHtmlString(mysqli $dBConnection, string $string, string $encoding = "UTF-8"): string
 {
   $string = mysqli_real_escape_string($dBConnection, mb_convert_encoding($string, $encoding));
   return $string;// Return the string.

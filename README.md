@@ -46,7 +46,7 @@ disconnect($dBConnection);
 
 ## System Requirements
 
-- PHP 7 or 8.
+- PHP 7.1 or later (Including PHP 8).
   - With mbstring and MySQLi extensions (these are usually included by default).
 - MySQL (or compatible) database server.
 
